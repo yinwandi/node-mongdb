@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style/bootstrap.css">
+</head>
+<body>
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  添加
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加数据</h4>
+      </div>
+      <div class="modal-body">
+       
+		 <form class="myform">
+  			<div class="form-group">
+    			<label>编号</label>
+   			 	<input type="text" placeholder="编号" name="num">
+  			</div>
+  			<div class="form-group">
+    			<label>姓名</label>
+    			<input type="text" placeholder="姓名" name="name">
+  			</div>
+  			<div class="form-group">
+    			<label>年龄</label>
+    			<input type="text" placeholder="年龄" name="age">
+  			</div>
+  			<div class="form-group">
+    			<label>性别</label>
+    			<input type="text" placeholder="性别" name="sex">
+  			</div>
+  			<button>提交</button>
+		 </form>
+
+      </div>
+    </div>
+  </div>
+</div>  <!-- 摸态框结束 -->
+<table class="tab table table-hover">
+	<thead>
+		<th>编号</th>
+		<th>姓名</th>
+		<th>年龄</th>
+		<th>性别</th>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+<script src="script/jquery.js"></script>
+<script src="script/bootstrap.js"></script>
+<script>
+	$(".myform").submit(function(){
+		var data = $(this).serialize();
+       	$.ajax({
+       		method:"post",
+       		url:"/insert",
+       		data:data
+       	}).done(function(){
+       		
+       	})
+       	$("table tbody tr").empty()//清空tbody里的数据若不写这句话，就把之前的数据又添加一遍在添加新数据
+       	ajax()
+       	return false;
+     })
+	ajax()
+	function ajax(){
+		$.ajax({
+				method:"get",
+				url:"/find",		
+			}).done(function(data){
+	            show(data);
+			})
+	}
+    function  show(elem){
+       for( var i in elem){
+       	var $tr=$("<tr>")
+       	for(var j in elem[i]){
+       		if(j!="_id"){
+       			var text=elem[i][j]
+	       		var $td=$("<td>")
+	       		$td.text(text)
+	       		$tr.append($td)
+       		}
+       		
+       	}
+       	$("table tbody").append($tr)
+       }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title #{tital}
+	link(rel="stylesheet", href="table.css")
+body
+	table
+		thead
+			tr
+				th 姓名
+				th 年龄
+				th 性别
+		tbody
+			-for(var i=0;i<table.length;i++)
+				tr
+					td=table[i].name
+					td=table[i].age
+					td=table[i].sex
+		
+		

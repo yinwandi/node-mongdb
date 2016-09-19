@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <title>Document</title>
+</head>
+<body>
+       <button class="but1">get请求</button>
+       <button class="but2">post请求</button>
+       <script>
+              var obut1 = document.querySelector(".but1");
+              var obut2 = document.querySelector(".but2");
+              var xhr = new XMLHttpRequest();
+              obut1.onclick=function(){
+                      majax("get","/hello",function(show){
+                            alert(show)
+                     })
+                     // xhr.open("get","/hello");
+                     // xhr.send();
+                     // xhr.onreadystatechange=function(){
+                     //        if(xhr.readyState==4 && xhr.status==200){
+                     //        alert(xhr.responseText)
+                     //         }
+                     // }
+              }
+
+               obut2.onclick=function(){
+                     majax("post","/home",function(show){
+                            alert(show)
+                     })
+                     // xhr.open("post","home");
+                     // xhr.send();
+                     //  xhr.onreadystatechange=function(){
+                     //        if(xhr.readyState==4 && xhr.status==200){
+                     //        alert(xhr.responseText)
+                     //         }
+                     // }
+
+              }
+       
+              function majax (elem,url,collback){
+                     var xhr = new XMLHttpRequest();     
+                     xhr.open(elem,url);
+                     xhr.send();
+                     xhr.onreadystatechange=function(){
+                            if(xhr.readyState==4 && xhr.status==200){
+                            collback(xhr.responseText)
+                             }
+                     }     
+              }
+
+       </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="style/bootstrap.min.css")
+body
+    table.table.table-hover
+        thead
+            tr
+                th 姓名
+                th 年龄
+                th 性别
+        tbody
+            -for(var i=0;i<date.length;i++)
+                tr
+                    td=date[i].name
+                    td=date[i].age
+                    td=date[i].sex

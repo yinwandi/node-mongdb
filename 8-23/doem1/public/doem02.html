@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="/getbox" class="myform">
+
+		<input type="text" name="username">
+		<label>足球</label>
+		<input type="checkbox" value="lan">
+		<label>篮球</label>
+		<input type="checkbox" value="zu">
+		<label>羽毛球</label>
+		<input type="checkbox" value="yu">
+		<button>提交</button>
+
+
+	</form>
+	<script src="script/jquery.js"></script>
+	<script>
+        $(".myform").submit(function(){
+        	var data = $(this).serialize();
+       	$.ajax({
+       		method:"post",
+       		url:"/insert",   //插入数据
+       		data:data
+       	}).done(function(data){
+       		show(data)   //调用show显示数据在表格里
+       	})
+        })
+
+	</script>
+</body>
+</html>

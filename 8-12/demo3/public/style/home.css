@@ -1,0 +1,14 @@
+ul li{
+	width: 100px;
+	height: 30px;
+	border:1px solid red;
+	text-align: center;
+    line-height: 30px;
+    list-style: none;
+    float:left;
+}
+
+
+ul{
+	display: inline;
+}

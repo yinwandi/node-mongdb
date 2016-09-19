@@ -1,0 +1,8 @@
+{
+  "name": "my-web",
+  "version": "0.0.0",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "jade": "^1.11.0"
+  }
+}

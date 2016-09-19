@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title #{title}
+	link(rel="stylesheet", href="style/home.css")
+body
+	h3 这是jade的文件
+	h2 下面是列表
+	ul
+		-for(var i=0;i<nav.length;i++)
+			li
+				a(href=nav[i].url)=nav[i].name
+			//- li=nav[i]
+		//- li #{nav[0]}
+		//- li #{nav[1]}
+		//- li #{nav[2]}
+	
+	script(src="script/home.js")

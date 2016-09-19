@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="sytle/bootstrap.min.css")
+body
+    button.insertdata.btn.btn-primary
+        | 添加
+    table.table.table-hover
+        thead
+            tr
+                th 姓名
+                th 年龄
+                th 性别
+                th 删除
+                th 修改
+        tbody
+            -for(var i=0;i<data.length;i++)
+                tr
+                    td=data[i].name
+                    td=data[i].age
+                    td=data[i].sex
+                    td
+                        button.removedata(data_num=data[i].name) 删除
+                    td
+                        button.updatedata(data_num=data[i].name) 修改
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title 添加/修改
+                .modal-body
+                    form.myform(method="post")
+                        .form-group
+                            label 姓名
+                            input.name.form-control(type='text',name="name")
+                        .form-group
+                            label 年龄
+                            input.form-control(type='text',name="age")
+                        .form-group
+                            label 性别
+                            input.form-control(type='text',name="sex")
+                        button.btn.btn-primary(type='submit') 添加/修改
+
+    script(src="script/jquery.js")
+    script(src="script/delete.js")
+    script(src="script/bootstrap.js")
